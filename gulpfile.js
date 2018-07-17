@@ -13,3 +13,17 @@ gulp.task('sass', function () {
 gulp.task('sass:watch', function () {
     gulp.watch('./public_html/scss/**/*.scss', ['sass']);
 });
+
+// webpack
+const webpack = require('webpack-stream');
+gulp.task('webpack', function () {
+    return gulp.src('src/js/index.js')
+        .pipe(webpack({
+            watch: false,
+            mode: 'production',
+            output: {
+                filename: 'index.js',
+            },
+        }))
+        .pipe(gulp.dest('public_html/js/'));
+});

@@ -133,3 +133,28 @@ $ npx webpack
 ## サンプル確認
 public_html/index.html  をブラウザで開いてみましょう。
 My Name is John. とアラートが表示され、コンソールには 12  6  が出力されることを確認しましょう。
+
+
+
+## Gulp から webpack を使う方法（応用）
+gulp から webpack を使うには webpack-stream モジュールをインストールする必要あり。
+
+$ npm install webpack-stream  
+$ vi gulpfile.js
+
+<pre>
+const webpack = require('webpack-stream');
+gulp.task('webpack', function () {
+    return gulp.src('src/js/index.js')
+        .pipe(webpack({
+            watch: false,
+            mode: 'production',
+            output: {
+                filename: 'index.js',
+            },
+        }))
+        .pipe(gulp.dest('public_html/js/'));
+});
+</pre>
+
+$ npx gulp webpack
