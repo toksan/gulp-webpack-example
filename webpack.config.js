@@ -4,6 +4,7 @@
 const path = require('path');
 
 module.exports = {
+    watch: false,// true にするとファイル更新時に自動ビルド
     mode: 'production',// 'development',
     entry: './src/js/index.js',
     output: {
