@@ -139,7 +139,7 @@ My Name is John. とアラートが表示され、コンソールには 12  6  �
 ## Gulp から webpack を使う方法（応用）
 gulp から webpack を使うには webpack-stream モジュールをインストールする必要あり。
 
-$ npm install webpack-stream  
+$ npm install -D webpack-stream  
 $ vi gulpfile.js
 
 <pre>
@@ -158,3 +158,13 @@ gulp.task('webpack', function () {
 </pre>
 
 $ npx gulp webpack
+
+
+## webpack + Babel でレガシーブラウザに対応（応用）
+
+<https://babeljs.io/setup>  
+<https://github.com/babel/babel-loader>
+
+$ npm install -D babel-loader babel-core babel-preset-env
+
+
