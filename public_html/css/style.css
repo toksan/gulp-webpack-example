@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 15px;
+  width: 100%;
+  max-width: 760px;
+}
+
+.container a {
+  color: royalblue;
+  text-decoration: none;
+}
+
+.container p {
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=style.css.map */
