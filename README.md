@@ -89,3 +89,52 @@ $ npx gulp sass:watch
 
 コマンドを実行すると public_html/scss/ にある拡張子 .scss ファイルに何らかの編集（変更）があると、  
 自動的に $ npx gulp sass が実行され、 .css と .css.map ファイルが作成されるようになります。
+
+
+# webpack の導入
+2018年時点の最新版 webpack v4 以降では webpack-cli をインストールする必要があります。
+
+$ npm install -D webpack webpack-cli
+
+
+# webpack の設定
+webpack.config.js という名前のファイルを設置
+
+<pre>
+const path = require('path');
+
+module.exports = {
+    mode: 'production',
+    entry: './src/js/index.js',
+    output: {
+        path: path.resolve(__dirname, 'public_html/js/'),
+        filename: 'index.js'
+    }
+};
+</pre>
+
+エントリポイント ./src/js/index.js を ./public/html/js/index.js にバンドル
+
+
+# サンプルファイルの作成
+src/js/modules/alert_name.js  
+src/js/index.js  
+public_html/index.html
+
+
+# webpack によるビルド
+webpack.config.js の設定、エントリやモジュールの作成が完了したら、下記コマンドでビルド。
+
+$ npx webpack
+
+これによりエントリポイント（このサンプルでは ./src/js/index.js ）をもとに関連するJSモジュール等を一つにまとめて（バンドルして）、output で指定したパスにJSファイルが書き出されます。
+
+
+# サンプル確認
+public_html/index.html  をブラウザで開いてみましょう。
+My Name is John. とアラートが表示され、コンソールには 12  6  が出力されることを確認しましょう。
+
+
+
+
+
