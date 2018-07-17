@@ -37,9 +37,9 @@ public_html/sass ディレクトリにある拡張子 .scss を
 public_html/css ディレクトリに .css として書き出します。
 
 <pre>
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('sass', function () {
     return gulp.src('./public_html/scss/**/*.scss')
