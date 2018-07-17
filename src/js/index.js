@@ -6,3 +6,4 @@ import * as calculator from './modules/calculator';
 alert_name('John');
 console.log(calculator.add(9, 3));// 12
 console.log(calculator.sub(9, 3));// 6
+console.log(calculator.pow(2, 3));// 8

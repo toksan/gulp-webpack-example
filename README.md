@@ -132,7 +132,7 @@ $ npx webpack
 
 ## サンプル確認
 public_html/index.html  をブラウザで開いてみましょう。
-My Name is John. とアラートが表示され、コンソールには 12  6  が出力されることを確認しましょう。
+My Name is John. とアラートが表示され、コンソールには 12  6  8  が出力されることを確認しましょう。
 
 
 
@@ -161,10 +161,41 @@ $ npx gulp webpack
 
 
 ## webpack + Babel でレガシーブラウザに対応（応用）
+Babel を導入することでレガシーブラウザにも対応できるようになる。
 
 <https://babeljs.io/setup>  
-<https://github.com/babel/babel-loader>
+<https://babeljs.io/docs/en/babel-preset-env/>
+<https://github.com/babel/babel-loader>  
 
 $ npm install -D babel-loader babel-core babel-preset-env
 
 
+webpack.config.js に下記を追記して再ビルド。
+
+<pref>
+module.exports = {
+
+    // .. 省略 ... //
+    
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        /**
+                         * Babel 6.x なら 'presets': ['env']
+                         * Babel 7.x なら 'presets': ['@babel/preset-env']
+                         */
+                        'presets': ['env']// Babel 6.x
+                    }
+                }
+            }
+        ]
+    }
+}
+</pre>
+
+$ npx webpack
